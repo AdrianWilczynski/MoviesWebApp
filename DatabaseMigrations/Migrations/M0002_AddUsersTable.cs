@@ -2,17 +2,17 @@
 
 namespace DatabaseMigrations.Migrations
 {
-    [Migration(1)]
-    public class M0001_AddMovieTable : Migration
+    [Migration(2)]
+    public class M0002_AddUsersTable : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("CreateMovieTable.sql");
+            Execute.EmbeddedScript("CreateUsersTable.sql");
         }
 
         public override void Down()
         {
-            Execute.Sql("DROP TABLE Movie");
+            Execute.Sql("DROP TABLE Users");
         }
     }
 }

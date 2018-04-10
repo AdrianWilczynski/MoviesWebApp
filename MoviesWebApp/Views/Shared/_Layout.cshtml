@@ -10,6 +10,18 @@
 <body>
     <nav>
         <a asp-action="@nameof(MovieController.Add)" asp-controller="Movie">Dodaj film</a>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a asp-action="@nameof(AccountController.Register)" asp-controller="Account">Zarejestruj się</a>
+            <a asp-action="@nameof(AccountController.Login)" asp-controller="Account">Zaloguj się</a>
+        }
+        else
+        {
+            <form asp-action="@nameof(AccountController.Logout)" asp-controller="Account">
+                <button type="submit">Wyloguj się</button>
+            </form>
+        }
     </nav>
 
     <div>

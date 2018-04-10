@@ -18,7 +18,6 @@ namespace MoviesWebApp.Controllers
         [Route("/")]
         public IActionResult Index(int page = 1, int pageSize = 10)
         {
-
             var basicMovieViewModels = movieRepository.GetMovies((page - 1) * pageSize, pageSize)
                 .Select(m => new BasicMovieViewModel
                 {

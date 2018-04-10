@@ -1,0 +1,30 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<form asp-action="@nameof(AccountController.Register)">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="RepeatPassword"></label>
+        <input asp-for="RepeatPassword" />
+        <span asp-validation-for="RepeatPassword"></span>
+    </div>
+    <button type="submit">Zarejestruj się</button>
+</form>

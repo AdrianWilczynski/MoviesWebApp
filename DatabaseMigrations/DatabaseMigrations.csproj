@@ -43,14 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\M0001_AddMovieTable.cs" />
+    <Compile Include="Migrations\M0001_AddMoviesTable.cs" />
+    <Compile Include="Migrations\M0002_AddUsersTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SQL\M0001_AddMovieTable\CreateMovieTable.sql" />
+    <EmbeddedResource Include="SQL\M0001_AddMoviesTable\CreateMoviesTable.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HowToRunMigrations.txt" />
+    <EmbeddedResource Include="SQL\M0002_AddUsersTable\CreateUsersTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,5 @@
+﻿Migrate:
+	Migrate.exe /connection "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MoviesDatabase;" /db SQLserver /target DatabaseMigrations\bin\Debug\DatabaseMigrations.dll
+
+Rollback:
+	Migrate.exe /connection "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MoviesDatabase;" /db SQLserver /target DatabaseMigrations\bin\Debug\DatabaseMigrations.dll --task rollback

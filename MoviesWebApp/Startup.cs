@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MoviesWebApp.Configuration;
+using MoviesWebApp.Controllers;
 using MoviesWebApp.DataAccess;
 using MoviesWebApp.DataAccess.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using MoviesWebApp.Models;
 using MoviesWebApp.Services;
 
 namespace MoviesWebApp
@@ -29,11 +28,22 @@ namespace MoviesWebApp
             services.AddOptions();
             services.Configure<DatabaseOptions>(configuration.GetSection("Database"));
 
-            services.AddTransient<IConnectionFactory, ConnectionFactory>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                });
+
+            services.AddTransient<IConnectionFactory, ConnectionFactory>();
             services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddTransient<IFileHelper, FileHelper>();
+            services.AddTransient<IUserManager, UserManager>();
+
+            services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
 
             services.AddMvc();
         }
@@ -48,6 +58,7 @@ namespace MoviesWebApp
 
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

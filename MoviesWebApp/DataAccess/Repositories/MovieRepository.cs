@@ -19,7 +19,7 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                connection.Execute(@"INSERT INTO Movie (Title, Description, PosterPath, ReleaseDate)
+                connection.Execute(@"INSERT INTO Movies (Title, Description, PosterPath, ReleaseDate)
                     VALUES(@Title, @Description, @PosterPath,  @ReleaseDate);",
                     new { movie.Title, movie.Description, movie.PosterPath, movie.ReleaseDate });
             }
@@ -29,7 +29,7 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.Query<Movie>(@"SELECT * FROM Movie
+                return connection.Query<Movie>(@"SELECT * FROM Movies
                     WHERE MovieId = @Id",
                     new { Id = id }).SingleOrDefault();
             }
@@ -39,7 +39,7 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.Query<Movie>("SELECT * FROM Movie");
+                return connection.Query<Movie>("SELECT * FROM Movies");
             }
         }
 
@@ -47,7 +47,7 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.Query<Movie>(@"SELECT * FROM Movie
+                return connection.Query<Movie>(@"SELECT * FROM Movies
                     ORDER BY MovieId
                     OFFSET @Skip ROWS
                     FETCH NEXT @Take ROWS ONLY",
