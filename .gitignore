@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+MoviesWebApp/wwwroot/lib/*
+
+MoviesWebApp/wwwroot/img/posters/*
+!MoviesWebApp/wwwroot/img/posters/.gitkeep

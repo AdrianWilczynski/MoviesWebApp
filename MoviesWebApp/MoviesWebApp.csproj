@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\lib\fontawesome\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿@model AddMovieViewModel
+
+@{ 
+    ViewBag.Title = "Dodaj film";
+}
+
+<form asp-action="@nameof(MovieController.Add)" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" rows="20"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label asp-for="Poster"></label>
+        <input asp-for="Poster" />
+        <span asp-validation-for="Poster"></span>
+    </div>
+    <div>
+        <label asp-for="ReleaseDate"></label>
+        <input asp-for="ReleaseDate" />
+        <span asp-validation-for="ReleaseDate"></span>
+    </div>
+    <button type="submit">Dodaj</button>
+</form>

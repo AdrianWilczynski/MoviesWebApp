@@ -1,0 +1,9 @@
+﻿@model MovieDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Title <small>(@Html.DisplayFor(m => m.ReleaseDate))</small></h2>
+<img src="~/@Model.PosterPath" />
+<div>@Model.Description</div>

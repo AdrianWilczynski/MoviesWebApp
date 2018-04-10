@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/lib/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <a asp-action="@nameof(MovieController.Add)" asp-controller="Movie">Dodaj film</a>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

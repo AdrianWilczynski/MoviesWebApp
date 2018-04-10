@@ -1,0 +1,10 @@
+﻿@model IEnumerable<BasicMovieViewModel> 
+
+@{ 
+    ViewBag.Title = "Strona główna";
+}
+
+@foreach (var movie in Model)
+{
+    <a asp-action="@nameof(MovieController.Details)" asp-controller="Movie" asp-route-id="@movie.MovieId">@movie.Title</a>
+}
