@@ -36,14 +36,6 @@ namespace MoviesWebApp.DataAccess.Repositories
             }
         }
 
-        public IEnumerable<Movie> GetMovies()
-        {
-            using (var connection = connectionFactory.GetConnection())
-            {
-                return connection.Query<Movie>("SELECT * FROM Movies");
-            }
-        }
-
         public IEnumerable<Movie> GetMovies(int skip, int take)
         {
             using (var connection = connectionFactory.GetConnection())

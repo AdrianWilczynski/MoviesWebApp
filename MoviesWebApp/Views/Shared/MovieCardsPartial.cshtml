@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MovieCardViewModel>
+
+@foreach (var movie in Model)
+{
+    <a asp-action="@nameof(MovieController.Details)" asp-controller="Movie" asp-route-id="@movie.MovieId">
+        <div class="movie-card">
+            <img src="~/@movie.PosterPath" alt="@movie.Title - plakat" class="movie-card-poster"/>
+            <div class="movie-card-overlay">
+                <span class="movie-card-text">@movie.Title</span>
+            </div>
+        </div>
+    </a>
+}

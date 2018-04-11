@@ -14,19 +14,32 @@ namespace MoviesWebApp.Controllers
             this.movieRepository = movieRepository;
         }
 
-        [Route("Page/{pageIndex:int}")]
+        [Route("Page/{page:int}")]
         [Route("/")]
         public IActionResult Index(int page = 1, int pageSize = 10)
         {
-            var basicMovieViewModels = movieRepository.GetMovies((page - 1) * pageSize, pageSize)
-                .Select(m => new BasicMovieViewModel
+            var movieCardViewModels = movieRepository.GetMovies((page - 1) * pageSize, pageSize)
+                .Select(m => new MovieCardViewModel
                 {
                     Title = m.Title,
+                    PosterPath = m.PosterPath,
                     MovieId = m.MovieId
                 })
                 .ToList();
 
-            return View(basicMovieViewModels);
+            var isAjaxRequest = HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
+            if (isAjaxRequest)
+            {
+                return PartialView("MovieCardsPartial", movieCardViewModels);
+            }
+
+            var homePageViewModel = new HomePageViewModel
+            {
+                Page = page,
+                MovieCards = movieCardViewModels
+            };
+
+            return View(homePageViewModel);
         }
     }
 }

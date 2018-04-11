@@ -1,6 +1,6 @@
 ﻿namespace MoviesWebApp.ViewModels
 {
-    public class BasicMovieViewModel
+    public class MovieCardViewModel
     {
         private string _posterPath;
 

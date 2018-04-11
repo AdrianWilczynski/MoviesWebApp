@@ -1,10 +1,17 @@
-﻿@model IEnumerable<BasicMovieViewModel> 
+﻿@model HomePageViewModel
 
-@{ 
+@{
     ViewBag.Title = "Strona główna";
 }
 
-@foreach (var movie in Model)
-{
-    <a asp-action="@nameof(MovieController.Details)" asp-controller="Movie" asp-route-id="@movie.MovieId">@movie.Title</a>
+<div id="movieCardsContainer" class="movie-cards-container" data-starting-page="@Model.Page">
+    @Html.Partial("MovieCardsPartial", Model.MovieCards)
+</div>
+
+<button id="loadMoreMovieCardsButton" class="load-more-movie-cards-button">
+    Wczytaj więcej
+</button>
+
+@section Scripts {
+    <script src="~/js/loadMoreMovieCards.js"></script>
 }

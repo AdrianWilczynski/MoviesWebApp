@@ -7,7 +7,6 @@ namespace MoviesWebApp.DataAccess.Repositories
     {
         int AddMovie(Movie movie);
         Movie GetMovieById(int id);
-        IEnumerable<Movie> GetMovies();
         IEnumerable<Movie> GetMovies(int skip, int take);
     }
 }

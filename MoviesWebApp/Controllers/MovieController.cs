@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MoviesWebApp.DataAccess.Repositories;
 using MoviesWebApp.Models;
 using MoviesWebApp.Services;
@@ -19,9 +20,11 @@ namespace MoviesWebApp.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Add() => View();
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult Add(AddMovieViewModel addMovieViewModel)
         {
