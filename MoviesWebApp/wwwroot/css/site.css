@@ -1,6 +1,11 @@
-﻿body {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
     margin: 0;
-    padding: 0;
+    padding: 0 0 50px 0;
     background: rgb(10, 10, 10);
     color: rgb(210, 210, 210);
     font-family: 'Open Sans', sans-serif;
@@ -80,6 +85,29 @@ a {
             font: inherit;
             font-size: inherit;
             cursor: pointer;
+        }
+
+
+.footer {
+    border-top: 1px solid rgb(50, 50, 50);
+    margin: 0;
+    background: rgb(20, 20, 20);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+    .footer .footer-container {
+        width: 80%;
+        max-width: 1440px;
+        margin: 0 auto;
+        text-align: right;
+        padding: 10px 0;
+    }
+
+        .footer .footer-container .footer-link {
+            text-decoration: none;
+            font-size: 0.8rem;
         }
 
 .standard-form {

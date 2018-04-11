@@ -13,6 +13,6 @@ namespace MoviesWebApp.Controllers
             contactEmail = databaseOptions.Value.Email;
         }
 
-        public IActionResult Contact() => View(contactEmail);
+        public IActionResult Contact() => View(model: contactEmail);
     }
 }
