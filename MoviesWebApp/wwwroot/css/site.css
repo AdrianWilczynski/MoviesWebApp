@@ -86,31 +86,60 @@ a {
     margin: 0 auto;
 }
 
-.standard-form-group > * {
-    display: block;
-    margin: 3px 0;
-    color: inherit;
-    font: inherit;
-}
+    .standard-form .standard-form-group > * {
+        display: block;
+        margin: 3px 0;
+        color: inherit;
+        font: inherit;
+    }
 
-.standard-form-group > input {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 5px;
-    border: 1px solid rgb(50, 50, 50);
-    background: none;
-}
+    .standard-form .standard-form-group > input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid rgb(50, 50, 50);
+        background: none;
+    }
 
-.standard-form-group > textarea {
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 100px;
-    padding: 5px;
-    border: 1px solid rgb(50, 50, 50);
-    background: none;
-}
+    .standard-form .standard-form-group > textarea {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 100px;
+        padding: 5px;
+        border: 1px solid rgb(50, 50, 50);
+        background: none;
+    }
+
+    .standard-form .form-button {
+        margin: 10px 0 10px 10px;
+        padding: 10px 25px;
+        float: right;
+        border: 1px solid rgb(50, 50, 50);
+        background: rgb(20, 20, 20);
+        color: inherit;
+        font: inherit;
+        font-size: 0.8rem;
+    }
+
+    .standard-form ::-webkit-calendar-picker-indicator:hover {
+        background: none;
+    }
+
+    .standard-form ::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    .standard-form ::-webkit-file-upload-button {
+        margin: 2px 0 2px 1px;
+        padding: 10px 25px;
+        border: 1px solid rgb(50, 50, 50);
+        background: rgb(20, 20, 20);
+        color: inherit;
+        font: inherit;
+        font-size: 0.8rem;
+    }
 
 .input-validation-error {
     border-color: rgb(155, 0, 0) !important;
@@ -118,15 +147,6 @@ a {
 
 .field-validation-error {
     color: rgb(155, 0, 0) !important;
-}
-
-.form-button {
-    margin: 10px 0 10px 10px;
-    padding: 10px 25px;
-    float: right;
-    border: 1px solid rgb(50, 50, 50);
-    background: rgb(20, 20, 20);
-    color: inherit;
 }
 
 @media (max-width: 768px) {
