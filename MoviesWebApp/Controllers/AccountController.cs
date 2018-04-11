@@ -71,8 +71,5 @@ namespace MoviesWebApp.Controllers
             await userManager.LogoutAsync();
             return Redirect("/");
         }
-
-        [Authorize]
-        public string Test() => "yeah!";
     }
 }

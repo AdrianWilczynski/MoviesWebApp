@@ -1,0 +1,130 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: rgb(10, 10, 10);
+    color: rgb(210, 210, 210);
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+.main-container {
+    width: 80%;
+    max-width: 1440px;
+    margin: 15px auto;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid rgb(50, 50, 50);
+    background: rgb(20, 20, 20);
+}
+
+    .navbar .navbar-container {
+        width: 80%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .navbar .navbar-collapse-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar #navbarCollapseButton {
+        display: none;
+    }
+
+    .navbar .navbar-link {
+        box-sizing: border-box;
+        width: 150px;
+        padding: 15px 0;
+        background: rgb(20, 20, 20);
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+        .navbar .navbar-link:hover {
+            background: rgb(10, 10, 10);
+        }
+
+        .navbar .navbar-link .navbar-link-text {
+            display: block;
+            margin-top: 3px;
+            font-size: 0.65rem;
+        }
+
+        .navbar .navbar-link .navbar-link-icon {
+            display: block;
+            font-size: 1.35rem;
+        }
+
+    .navbar .navbar-link-form {
+        width: 150px;
+    }
+
+        .navbar .navbar-link-form button {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 15px 0;
+            border: none;
+            outline: none;
+            background: none;
+            color: inherit;
+            font: inherit;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+.standard-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.standard-form-group > * {
+    display: block;
+    margin: 3px 0;
+    color: inherit;
+    font: inherit;
+}
+
+.standard-form-group > input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(50, 50, 50);
+    background: none;
+}
+
+.standard-form-group > textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    padding: 5px;
+    border: 1px solid rgb(50, 50, 50);
+    background: none;
+}
+
+.input-validation-error {
+    border-color: rgb(155, 0, 0) !important;
+}
+
+.field-validation-error {
+    color: rgb(155, 0, 0) !important;
+}
+
+.form-button {
+    margin: 10px 0 10px 10px;
+    padding: 10px 25px;
+    float: right;
+    border: 1px solid rgb(50, 50, 50);
+    background: rgb(20, 20, 20);
+    color: inherit;
+}

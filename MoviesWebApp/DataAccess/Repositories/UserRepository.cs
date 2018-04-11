@@ -27,9 +27,9 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.Query<User>(@"SELECT * FROM Users
+                return connection.QuerySingleOrDefault<User>(@"SELECT * FROM Users
                     WHERE Email = @Email",
-                    new { Email = email }).SingleOrDefault();
+                    new { Email = email });
             }
         }
     }

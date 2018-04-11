@@ -15,11 +15,12 @@ namespace MoviesWebApp.DataAccess.Repositories
             this.connectionFactory = connectionFactory;
         }
 
-        public void AddMovie(Movie movie)
+        public int AddMovie(Movie movie)
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                connection.Execute(@"INSERT INTO Movies (Title, Description, PosterPath, ReleaseDate)
+                return connection.QuerySingle<int>(@"INSERT INTO Movies (Title, Description, PosterPath, ReleaseDate)
+                    OUTPUT INSERTED.MovieId
                     VALUES(@Title, @Description, @PosterPath,  @ReleaseDate);",
                     new { movie.Title, movie.Description, movie.PosterPath, movie.ReleaseDate });
             }
@@ -29,9 +30,9 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.Query<Movie>(@"SELECT * FROM Movies
+                return connection.QuerySingleOrDefault<Movie>(@"SELECT * FROM Movies
                     WHERE MovieId = @Id",
-                    new { Id = id }).SingleOrDefault();
+                    new { Id = id });
             }
         }
 

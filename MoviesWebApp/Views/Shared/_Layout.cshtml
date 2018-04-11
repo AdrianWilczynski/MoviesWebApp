@@ -6,25 +6,19 @@
     <title>@ViewBag.Title</title>
 
     <link href="~/lib/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+    <environment names="Development">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/site.min.css" rel="stylesheet" />
+    </environment>
 </head>
 <body>
-    <nav>
-        <a asp-action="@nameof(MovieController.Add)" asp-controller="Movie">Dodaj film</a>
+    @Html.Partial("NavbarPartial")
 
-        @if (!User.Identity.IsAuthenticated)
-        {
-            <a asp-action="@nameof(AccountController.Register)" asp-controller="Account">Zarejestruj się</a>
-            <a asp-action="@nameof(AccountController.Login)" asp-controller="Account">Zaloguj się</a>
-        }
-        else
-        {
-            <form asp-action="@nameof(AccountController.Logout)" asp-controller="Account">
-                <button type="submit">Wyloguj się</button>
-            </form>
-        }
-    </nav>
-
-    <div>
+    <div class="main-container">
         @RenderBody()
     </div>
 </body>

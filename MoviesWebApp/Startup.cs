@@ -27,6 +27,7 @@ namespace MoviesWebApp
         {
             services.AddOptions();
             services.Configure<DatabaseOptions>(configuration.GetSection("Database"));
+            services.Configure<ContactOptions>(configuration.GetSection("Contact"));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -37,6 +38,7 @@ namespace MoviesWebApp
                 });
 
             services.AddTransient<IConnectionFactory, ConnectionFactory>();
+
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
 
@@ -54,6 +56,10 @@ namespace MoviesWebApp
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/System/Error");
             }
 
             app.UseStatusCodePages();

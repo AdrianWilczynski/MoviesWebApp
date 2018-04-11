@@ -5,6 +5,7 @@ let gulp = require("gulp");
 let rimraf = require("rimraf");
 let concat = require("gulp-concat");
 let cssmin = require("gulp-cssmin");
+let rename = require("gulp-rename");
 
 gulp.task("clean", function (cb) {
     rimraf("./wwwroot/lib", cb);
@@ -37,4 +38,11 @@ gulp.task("copy-jquery", ["clean"], function () {
         .pipe(gulp.dest("./wwwroot/lib/jquery/js"));
 });
 
-gulp.task("on-build", ["handle-fontawesome", "copy-jquery"]);
+gulp.task("minify-site-css", function () {
+    return gulp.src("./wwwroot/css/site.css")
+        .pipe(cssmin())
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest("./wwwroot/css"));
+});
+
+gulp.task("on-build", ["handle-fontawesome", "copy-jquery", "minify-site-css"]);

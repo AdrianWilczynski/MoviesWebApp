@@ -52,7 +52,8 @@ namespace MoviesWebApp.Controllers
 
             try
             {
-                movieRepository.AddMovie(movie);
+                var movieId = movieRepository.AddMovie(movie);
+                return RedirectToAction(nameof(Details), new { id = movieId });
             }
             catch
             {
@@ -60,15 +61,12 @@ namespace MoviesWebApp.Controllers
 
                 ModelState.AddModelError("", "W czasie dodawania filmu do bazy danych, wystąpił błąd.");
                 return View(addMovieViewModel);
-            }
-
-            return Redirect("/");
+            }           
         }
 
         [Route("[controller]/[action]/{id:int}")]
         public IActionResult Details(int id)
         {
-
             var movie = movieRepository.GetMovieById(id);
 
             if (movie == null)
