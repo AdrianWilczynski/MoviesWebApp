@@ -1,11 +1,11 @@
 ﻿/// <binding BeforeBuild='on-build' />
 "use strict";
 
-let gulp = require("gulp");
-let rimraf = require("rimraf");
-let concat = require("gulp-concat");
-let cssmin = require("gulp-cssmin");
-let rename = require("gulp-rename");
+var gulp = require("gulp");
+var rimraf = require("rimraf");
+var concat = require("gulp-concat");
+var cssmin = require("gulp-cssmin");
+var rename = require("gulp-rename");
 
 gulp.task("clean", function (cb) {
     rimraf("./wwwroot/lib", cb);

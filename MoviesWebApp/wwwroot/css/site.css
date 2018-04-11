@@ -128,3 +128,26 @@ a {
     background: rgb(20, 20, 20);
     color: inherit;
 }
+
+@media (max-width: 768px) {
+    .navbar .navbar-link {
+        width: 100%;
+    }
+
+    .navbar .navbar-link-form {
+        width: 100%;
+    }
+
+    .navbar .navbar-collapse-content {
+        display: none;
+        flex-direction: column;
+    }
+
+    .navbar #navbarCollapseButton {
+        display: block;
+    }
+}
+
+.show-collapsed-navbar-content {
+    display: flex !important;
+}
