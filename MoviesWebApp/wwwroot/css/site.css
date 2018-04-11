@@ -51,7 +51,6 @@ a {
         background: rgb(20, 20, 20);
         text-align: center;
         text-decoration: none;
-        text-transform: uppercase;
     }
 
         .navbar .navbar-link:hover {
@@ -61,7 +60,7 @@ a {
         .navbar .navbar-link .navbar-link-text {
             display: block;
             margin-top: 3px;
-            font-size: 0.65rem;
+            font-size: 0.75rem;
         }
 
         .navbar .navbar-link .navbar-link-icon {
@@ -89,31 +88,37 @@ a {
 
 
 .footer {
-    border-top: 1px solid rgb(50, 50, 50);
-    margin: 0;
-    background: rgb(20, 20, 20);
     position: absolute;
     bottom: 0;
     width: 100%;
+    margin: 0;
+    border-top: 1px solid rgb(50, 50, 50);
+    background: rgb(20, 20, 20);
 }
 
     .footer .footer-container {
         width: 80%;
         max-width: 1440px;
         margin: 0 auto;
-        text-align: right;
         padding: 10px 0;
+        text-align: right;
     }
 
         .footer .footer-container .footer-link {
+            font-size: 0.75rem;
             text-decoration: none;
-            font-size: 0.8rem;
         }
 
 .standard-form {
     max-width: 600px;
     margin: 0 auto;
 }
+
+    .standard-form::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
 
     .standard-form .standard-form-group > * {
         display: block;
@@ -149,7 +154,7 @@ a {
         background: rgb(20, 20, 20);
         color: inherit;
         font: inherit;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
         .standard-form .form-button:hover {
@@ -171,7 +176,7 @@ a {
         background: rgb(20, 20, 20);
         color: inherit;
         font: inherit;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
         .standard-form ::-webkit-file-upload-button:hover {
@@ -195,8 +200,7 @@ a {
     background: rgb(20, 20, 20);
     color: inherit;
     font: inherit;
-    font-size: 0.85rem;
-    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
     .load-more-movie-cards-button:hover {
