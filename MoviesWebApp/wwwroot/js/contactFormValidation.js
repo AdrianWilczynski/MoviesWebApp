@@ -1,6 +1,6 @@
-﻿document.getElementById("sendEmailButton")
-    .addEventListener("click",
-    function () {
+﻿document.getElementById("contactForm")
+    .addEventListener("submit",
+    function (event) {
         let contactForm = document.getElementById("contactForm");
 
         let subject = contactForm.subject;
