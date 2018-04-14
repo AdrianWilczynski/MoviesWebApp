@@ -40,11 +40,15 @@ namespace MoviesWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login() => View();
+        public IActionResult Login(string returnUrl) => View(
+            new LoginViewModel
+            {
+                ReturnUrl = returnUrl
+            });
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +65,8 @@ namespace MoviesWebApp.Controllers
                 return View(loginViewModel);
             }
 
-            return Redirect(Url.IsLocalUrl(returnUrl) ? returnUrl : "/");
+            return Redirect(Url.IsLocalUrl(loginViewModel.ReturnUrl) 
+                ? loginViewModel.ReturnUrl : "/");
         }
 
         [HttpPost]

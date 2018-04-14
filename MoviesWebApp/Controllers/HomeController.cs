@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesWebApp.DataAccess.Repositories;
 using MoviesWebApp.ViewModels;
+using System;
 using System.Linq;
 
 namespace MoviesWebApp.Controllers
@@ -24,8 +25,7 @@ namespace MoviesWebApp.Controllers
                     Title = m.Title,
                     PosterPath = m.PosterPath,
                     MovieId = m.MovieId
-                })
-                .ToList();
+                });
 
             var isAjaxRequest = HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
             if (isAjaxRequest)

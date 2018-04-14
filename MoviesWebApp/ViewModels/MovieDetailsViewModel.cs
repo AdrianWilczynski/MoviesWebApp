@@ -7,6 +7,7 @@ namespace MoviesWebApp.ViewModels
     {
         private string _posterPath;
 
+        public int MovieId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -14,5 +15,7 @@ namespace MoviesWebApp.ViewModels
 
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
+
+        public bool? Liked { get; set; }
     }
 }

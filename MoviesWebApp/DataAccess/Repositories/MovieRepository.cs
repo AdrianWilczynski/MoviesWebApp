@@ -31,7 +31,7 @@ namespace MoviesWebApp.DataAccess.Repositories
             using (var connection = connectionFactory.GetConnection())
             {
                 return connection.QuerySingleOrDefault<Movie>(@"SELECT * FROM Movies
-                    WHERE MovieId = @Id",
+                    WHERE MovieId = @Id;",
                     new { Id = id });
             }
         }
@@ -43,8 +43,40 @@ namespace MoviesWebApp.DataAccess.Repositories
                 return connection.Query<Movie>(@"SELECT * FROM Movies
                     ORDER BY MovieId
                     OFFSET @Skip ROWS
-                    FETCH NEXT @Take ROWS ONLY",
+                    FETCH NEXT @Take ROWS ONLY;",
                     new { Skip = skip, Take = take });
+            }
+        }
+
+        public void LikeMovie(int movieId, int userId)
+        {
+            using (var connection = connectionFactory.GetConnection())
+            {
+                connection.Execute(@"INSERT INTO Likes(UserId, MovieId)
+                    VALUES (@MovieId, @UserId);",
+                    new { MovieId = movieId, UserId = userId });
+            }
+        }
+
+        public void UnlikeMovie(int movieId, int userId)
+        {
+            using (var connection = connectionFactory.GetConnection())
+            {
+                connection.Execute(@"DELETE FROM Likes
+                    WHERE MovieId = @MovieId AND UserId = @UserId;",
+                    new { MovieId = movieId, UserId = userId });
+            }
+        }
+
+        public bool IsLiked(int movieId, int userId)
+        {
+            using (var connection = connectionFactory.GetConnection())
+            {
+                var like = connection.QuerySingleOrDefault(@"SELECT * FROM Likes
+                    WHERE MovieId = @MovieId AND UserId = @UserId;",
+                    new { MovieId = movieId, UserId = userId });
+
+                return like != null;
             }
         }
     }

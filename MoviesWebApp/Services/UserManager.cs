@@ -25,14 +25,24 @@ namespace MoviesWebApp.Services
 
         public async Task<bool> TryLoginAsync(string email, string password)
         {
-            if (!ValidateLoginAttempt(email, password))
+            var user = userRepository.GetUserByEmail(email);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            if (passwordHasher.VerifyHashedPassword(
+                null, user.PasswordHash, password) != PasswordVerificationResult.Success)
             {
                 return false;
             }
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
             };
 
             var userIdentity = new ClaimsIdentity(claims, "email");
@@ -71,18 +81,5 @@ namespace MoviesWebApp.Services
         }
 
         public async Task LogoutAsync() => await httpContextAccessor.HttpContext.SignOutAsync();
-
-        private bool ValidateLoginAttempt(string email, string password)
-        {
-            var user = userRepository.GetUserByEmail(email);
-
-            if (user == null)
-            {
-                return false;
-            }
-
-            return passwordHasher.VerifyHashedPassword(
-                null, user.PasswordHash, password) == PasswordVerificationResult.Success;
-        }
     }
 }

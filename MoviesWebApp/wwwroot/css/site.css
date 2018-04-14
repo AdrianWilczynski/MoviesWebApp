@@ -187,7 +187,7 @@ a {
     border-color: rgb(155, 0, 0) !important;
 }
 
-.field-validation-error {
+.field-validation-error, .validation-summary-errors {
     color: rgb(155, 0, 0) !important;
 }
 
@@ -249,6 +249,20 @@ a {
         text-overflow: ellipsis;
         text-transform: capitalize;
     }
+
+.like-button {
+    border: none;
+    background: none;
+    font-size: 3rem;
+}
+
+.like-button.unliked {
+    color: rgb(150, 150, 150);
+}
+
+.like-button.liked {
+    color: rgb(155, 0, 0);
+}
 
 @media (max-width: 768px) {
     .navbar .navbar-link {

@@ -1,0 +1,5 @@
+﻿CREATE TABLE Likes (
+	UserId int NOT NULL FOREIGN KEY REFERENCES Users(UserId),
+	MovieId int NOT NULL FOREIGN KEY REFERENCES Movies(MovieId),
+	PRIMARY KEY (UserId, MovieId)
+);

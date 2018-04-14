@@ -1,3 +1,33 @@
 ﻿@model string
 
-Contact - placeholder
+@{
+    ViewBag.Title = "Kontakt";
+}
+
+<form action="mailto:@Model?subject=subjectGoesHere&body=bodyGoesHere" id="contactForm" method="post" enctype="text/plain"
+      class="standard-form">
+    <div class="standard-form-group">
+        <label for="subject">Temat</label>
+        <input id="subject" name="Subject" />
+        <span id="validationErrorForSubject" class="field-validation-error"></span>
+    </div>
+    <div class="standard-form-group">
+        <label for="body">Treść</label>
+        <textarea id="body" name="Body" rows="20"></textarea>
+        <span id="validationErrorForBody" class="field-validation-error"></span>
+    </div>
+    <button id="sendEmailButton" type="submit" class="form-button">
+        Wyślij przy pomocy klienta pocztowego
+    </button>
+</form>
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/js/contactFormValidation.js"></script>
+        <script src="~/js/formatEmail.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/contactFormValidation.min.js"></script>
+        <script src="~/js/formatEmail.min.js"></script>
+    </environment>
+}

@@ -57,10 +57,6 @@ namespace MoviesWebApp
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/System/Error");
-            }
 
             app.UseStatusCodePages();
             app.UseStaticFiles();

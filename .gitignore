@@ -266,3 +266,4 @@ MoviesWebApp/wwwroot/img/posters/*
 !MoviesWebApp/wwwroot/img/posters/.gitkeep
 
 MoviesWebApp/wwwroot/css/*.min.css
+MoviesWebApp/wwwroot/js/*.min.js

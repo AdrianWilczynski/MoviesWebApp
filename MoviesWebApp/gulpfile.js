@@ -6,19 +6,25 @@ let rimraf = require("rimraf");
 let concat = require("gulp-concat");
 let cssmin = require("gulp-cssmin");
 let rename = require("gulp-rename");
+let uglify = require("gulp-uglify");
+let babel = require("gulp-babel");
 
-gulp.task("clean", function (cb) {
+gulp.task("clean-lib", function (cb) {
     rimraf("./wwwroot/lib", cb);
 });
 
-gulp.task("copy-fontawesome-css", ["clean"], function () {
+gulp.task("clean-js", function (cb) {
+    rimraf("./wwwroot/js/*.min.js", cb);
+});
+
+gulp.task("copy-fontawesome-css", ["clean-lib"], function () {
     return gulp.src([
         "./node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css",
         "./node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css"])
         .pipe(gulp.dest("./wwwroot/lib/fontawesome/css/"));
 });
 
-gulp.task("copy-fontawesome-fonts", ["clean"], function () {
+gulp.task("copy-fontawesome-fonts", ["clean-lib"], function () {
     return gulp.src("./node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/*")
         .pipe(gulp.dest("./wwwroot/lib/fontawesome/webfonts/"));
 });
@@ -31,9 +37,9 @@ gulp.task("bundle-and-minify-fontawesome", ["copy-fontawesome-css"], function ()
 })
 
 gulp.task("handle-fontawesome",
-    ["clean", "copy-fontawesome-css", "copy-fontawesome-fonts", "bundle-and-minify-fontawesome"]);
+    ["clean-lib", "copy-fontawesome-css", "copy-fontawesome-fonts", "bundle-and-minify-fontawesome"]);
 
-gulp.task("copy-jquery", ["clean"], function () {
+gulp.task("copy-jquery", ["clean-lib"], function () {
     return gulp.src("./node_modules/jquery/dist/jquery.min.js")
         .pipe(gulp.dest("./wwwroot/lib/jquery/js"));
 });
@@ -45,4 +51,15 @@ gulp.task("minify-site-css", function () {
         .pipe(gulp.dest("./wwwroot/css"));
 });
 
-gulp.task("on-build", ["handle-fontawesome", "copy-jquery", "minify-site-css"]);
+gulp.task("minify-and-transpiler-js-scripts", ["clean-js"], function () {
+    return gulp.src("./wwwroot/js/*.js")
+        .pipe(babel({
+            presets: ['env']
+        }))
+        .pipe(uglify())
+        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest("./wwwroot/js"));
+});
+
+gulp.task("on-build", ["handle-fontawesome", "copy-jquery",
+    "minify-site-css", "minify-and-transpiler-js-scripts"]);

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\M0001_AddMoviesTable.cs" />
+    <Compile Include="Migrations\M0003_AddLikesTable.cs" />
     <Compile Include="Migrations\M0002_AddUsersTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,11 +52,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SQL\M0001_AddMoviesTable\CreateMoviesTable.sql" />
+    <EmbeddedResource Include="SQL\CreateMoviesTable.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HowToRunMigrations.txt" />
-    <EmbeddedResource Include="SQL\M0002_AddUsersTable\CreateUsersTable.sql" />
+    <EmbeddedResource Include="SQL\CreateLikesTable.sql" />
+    <EmbeddedResource Include="SQL\CreateUsersTable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

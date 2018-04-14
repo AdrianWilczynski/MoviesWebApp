@@ -1,5 +1,9 @@
 ﻿@model LoginViewModel
 
+@{
+    ViewBag.Title = "Logowanie";
+}
+
 <form asp-action="@nameof(AccountController.Login)" class="standard-form">
     <div asp-validation-summary="ModelOnly"></div>
     <div class="standard-form-group">
@@ -12,5 +16,6 @@
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
+    <input asp-for="ReturnUrl" />
     <button type="submit" class="form-button">Zaloguj się</button>
 </form>

@@ -4,6 +4,23 @@
     ViewBag.Title = Model.Title;
 }
 
+@if (User.Identity.IsAuthenticated && Model.Liked != null)
+{
+    <button id="likeButton" class="like-button @(Model.Liked.Value ? "liked" : "unliked")"
+            data-movie-id="@Model.MovieId" data-liked="@Model.Liked.Value">
+        <i class="fas fa-heart"></i>
+    </button>
+}
+
 <h2>@Model.Title <small>(@Html.DisplayFor(m => m.ReleaseDate))</small></h2>
 <img src="~/@Model.PosterPath" />
 <div>@Model.Description</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/js/likeMovie.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/likeMovie.min.js"></script>
+    </environment>
+}
