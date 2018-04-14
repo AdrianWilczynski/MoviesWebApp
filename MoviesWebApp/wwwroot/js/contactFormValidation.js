@@ -46,4 +46,4 @@
             event.preventDefault();
             event.stopPropagation();
         }
-    })
+    });

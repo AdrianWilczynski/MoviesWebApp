@@ -1,20 +1,49 @@
 ﻿@model MovieDetailsViewModel
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = $"{Model.Title} ({Model.ReleaseDate.Year})";
 }
 
-@if (User.Identity.IsAuthenticated && Model.Liked != null)
-{
-    <button id="likeButton" class="like-button @(Model.Liked.Value ? "liked" : "unliked")"
-            data-movie-id="@Model.MovieId" data-liked="@Model.Liked.Value">
-        <i class="fas fa-heart"></i>
-    </button>
-}
-
-<h2>@Model.Title <small>(@Html.DisplayFor(m => m.ReleaseDate))</small></h2>
-<img src="~/@Model.PosterPath" />
-<div>@Model.Description</div>
+<div class="movie-details-container">
+    <div class="movie-details-panel">
+        <img src="~/@Model.PosterPath" alt="@Model.Title - plakat" class="movie-details-poster" />
+    </div>
+    <div class="movie-details-panel">
+        <div class="movie-details-icons">
+            <a href="http://www.imdb.com/find?q=@Model.Title&s=tt&ref_=fn_al_tt_mr"  
+               title="Więcej informacji w serwisie IMDB" target="_blank">
+                <i class="fab fa-imdb fa-3x"></i>
+            </a>
+            @if (User.Identity.IsAuthenticated && Model.Liked != null)
+            {
+                <button id="likeButton" class="like-button @(Model.Liked.Value ? "liked" : "unliked")"
+                        data-movie-id="@Model.MovieId" data-liked="@Model.Liked.Value"
+                        title="Polub ten film">
+                    <i class="fas fa-heart"></i>
+                </button>
+            }
+        </div>
+        <table class="movie-details-table">
+            <tr>
+                <td colspan="2">
+                    <h2 class="movie-title">@Model.Title <span class="release-date">(@Model.ReleaseDate.Year)</span></h2>
+                </td>
+            </tr>
+            <tr>
+                <th>Opis:</th>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <th>Premiera:</th>
+                <td>@Html.DisplayFor(m => m.ReleaseDate)</td>
+            </tr>
+            <tr>
+                <th>Produkcja:</th>
+                <td>@Model.Country</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 @section Scripts {
     <environment names="Development">

@@ -10,6 +10,7 @@ namespace MoviesWebApp.ViewModels
         public int MovieId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Country { get; set; }
 
         public string PosterPath { get => _posterPath; set => _posterPath = value.Replace(@"\", "/"); }
 

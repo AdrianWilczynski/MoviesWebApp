@@ -265,8 +265,8 @@ a {
     }
 
 .info-box {
-    text-align: center;
     margin-top: 75px;
+    text-align: center;
 }
 
     .info-box .info-box-icon {
@@ -278,10 +278,57 @@ a {
     }
 
 .all-loaded-info {
-    text-align: center;
     margin-top: 20px;
     font-size: 0.75rem;
+    text-align: center;
 }
+
+.movie-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .movie-details-container .movie-title .release-date {
+        font-size: 0.75em;
+        font-style: italic;
+    }
+
+    .movie-details-container .movie-details-poster {
+        width: 400px;
+        max-width: 100%;
+        border: 1px solid rgb(50, 50, 50);
+    }
+
+    .movie-details-container .movie-details-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+        .movie-details-container .movie-details-table th {
+            width: 30%;
+            padding-left: 3px;
+            font-weight: bold;
+        }
+
+        .movie-details-container .movie-details-table tr:nth-child(even) {
+            background: rgb(20, 20, 20);
+        }
+
+    .movie-details-container .movie-details-panel:last-child {
+        width: 350px;
+        max-width: 100%;
+        margin-left: 10px;
+    }
+
+    .movie-details-container .movie-details-icons {
+        padding-left: 5px;
+    }
+
+        .movie-details-container .movie-details-icons a {
+            text-decoration: none;
+        }
 
 @media (max-width: 768px) {
     .navbar .navbar-link {

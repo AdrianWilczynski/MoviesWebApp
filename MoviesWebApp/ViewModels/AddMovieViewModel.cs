@@ -23,5 +23,10 @@ namespace MoviesWebApp.ViewModels
         [Required(ErrorMessage = "Plakat jest wymagany.")]
         [Display(Name = "Plakat")]
         public IFormFile Poster { get; set; }
+
+        [MaxLength(255, ErrorMessage = "Kraj nie może być dłuższy niż 255 znaków.")]
+        [Required(ErrorMessage = "Kraj produkcji jest wymagany.")]
+        [Display(Name = "Kraj produkcji")]
+        public string Country { get; set; }
     }
 }

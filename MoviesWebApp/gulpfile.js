@@ -20,6 +20,7 @@ gulp.task("clean-js", function (cb) {
 gulp.task("copy-fontawesome-css", ["clean-lib"], function () {
     return gulp.src([
         "./node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css",
+        "./node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css",
         "./node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css"])
         .pipe(gulp.dest("./wwwroot/lib/fontawesome/css/"));
 });
@@ -34,7 +35,7 @@ gulp.task("bundle-and-minify-fontawesome", ["copy-fontawesome-css"], function ()
         .pipe(concat("fontawesome-all.min.css"))
         .pipe(cssmin())
         .pipe(gulp.dest("./wwwroot/lib/fontawesome/css/"));
-})
+});
 
 gulp.task("handle-fontawesome",
     ["clean-lib", "copy-fontawesome-css", "copy-fontawesome-fonts", "bundle-and-minify-fontawesome"]);
@@ -51,7 +52,7 @@ gulp.task("minify-site-css", function () {
         .pipe(gulp.dest("./wwwroot/css"));
 });
 
-gulp.task("minify-and-transpiler-js-scripts", ["clean-js"], function () {
+gulp.task("minify-and-transpile-js-scripts", ["clean-js"], function () {
     return gulp.src("./wwwroot/js/*.js")
         .pipe(babel({
             presets: ['env']
@@ -62,4 +63,4 @@ gulp.task("minify-and-transpiler-js-scripts", ["clean-js"], function () {
 });
 
 gulp.task("on-build", ["handle-fontawesome", "copy-jquery",
-    "minify-site-css", "minify-and-transpiler-js-scripts"]);
+    "minify-site-css", "minify-and-transpile-js-scripts"]);

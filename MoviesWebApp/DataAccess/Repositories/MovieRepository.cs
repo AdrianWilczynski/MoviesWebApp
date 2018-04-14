@@ -19,10 +19,10 @@ namespace MoviesWebApp.DataAccess.Repositories
         {
             using (var connection = connectionFactory.GetConnection())
             {
-                return connection.QuerySingle<int>(@"INSERT INTO Movies (Title, Description, PosterPath, ReleaseDate)
+                return connection.QuerySingle<int>(@"INSERT INTO Movies (Title, Description, PosterPath, ReleaseDate, Country)
                     OUTPUT INSERTED.MovieId
-                    VALUES(@Title, @Description, @PosterPath,  @ReleaseDate);",
-                    new { movie.Title, movie.Description, movie.PosterPath, movie.ReleaseDate });
+                    VALUES(@Title, @Description, @PosterPath,  @ReleaseDate, @Country);",
+                    new { movie.Title, movie.Description, movie.PosterPath, movie.ReleaseDate, movie.Country });
             }
         }
 
@@ -53,7 +53,7 @@ namespace MoviesWebApp.DataAccess.Repositories
             using (var connection = connectionFactory.GetConnection())
             {
                 return connection.Query<Movie>(
-                    @"SELECT Movies.MovieId, Title, Description, PosterPath, ReleaseDate FROM Movies
+                    @"SELECT Movies.MovieId, Title, Description, PosterPath, ReleaseDate, Country FROM Movies
                     JOIN Likes ON Movies.MovieId = Likes.MovieId
                     JOIN Users ON Likes.UserId = Users.UserId
                     WHERE Users.UserId = 1;",

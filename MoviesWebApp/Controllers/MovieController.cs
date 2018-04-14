@@ -52,7 +52,8 @@ namespace MoviesWebApp.Controllers
                 Title = addMovieViewModel.Title,
                 Description = addMovieViewModel.Description,
                 PosterPath = posterPath,
-                ReleaseDate = addMovieViewModel.ReleaseDate.Value
+                ReleaseDate = addMovieViewModel.ReleaseDate.Value,
+                Country = addMovieViewModel.Country
             };
 
             try
@@ -93,6 +94,7 @@ namespace MoviesWebApp.Controllers
                 Description = movie.Description,
                 PosterPath = movie.PosterPath,
                 ReleaseDate = movie.ReleaseDate,
+                Country = movie.Country,
                 Liked = liked
             };
 

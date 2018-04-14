@@ -3,5 +3,6 @@
 	Title varchar(255) NOT NULL UNIQUE,
 	Description varchar(max) NOT NULL,
 	PosterPath varchar(max) NOT NULL,
-	ReleaseDate date NOT NULL
+	ReleaseDate date NOT NULL,
+	Country varchar(255) NOT NULL
 );
