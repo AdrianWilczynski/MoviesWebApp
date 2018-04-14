@@ -1,6 +1,7 @@
 ﻿@model MovieDetailsViewModel
 
 @{
+    var urlEncodedTitle = System.Net.WebUtility.UrlEncode(Model.Title);
     ViewBag.Title = $"{Model.Title} ({Model.ReleaseDate.Year})";
 }
 
@@ -10,7 +11,7 @@
     </div>
     <div class="movie-details-panel">
         <div class="movie-details-icons">
-            <a href="http://www.imdb.com/find?q=@Model.Title&s=tt&ref_=fn_al_tt_mr"  
+            <a href="http://www.imdb.com/find?q=@urlEncodedTitle&s=tt&ref_=fn_al_tt_mr"  
                title="Więcej informacji w serwisie IMDB" target="_blank">
                 <i class="fab fa-imdb fa-3x"></i>
             </a>

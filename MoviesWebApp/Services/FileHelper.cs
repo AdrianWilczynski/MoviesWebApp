@@ -38,10 +38,11 @@ namespace MoviesWebApp.Services
         {
             fileName = Path.GetFileName(fileName);
 
-            return Path.GetFileNameWithoutExtension(fileName)
+            return (Path.GetFileNameWithoutExtension(fileName)
                       + "_"
                       + Guid.NewGuid().ToString().Substring(0, 10)
-                      + Path.GetExtension(fileName);
+                      + Path.GetExtension(fileName))
+                      .Replace(" ", "_");
         }
     }
 }
