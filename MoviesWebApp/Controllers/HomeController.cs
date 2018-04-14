@@ -30,6 +30,11 @@ namespace MoviesWebApp.Controllers
             var isAjaxRequest = HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
             if (isAjaxRequest)
             {
+                if (!movieCardViewModels.Any())
+                {
+                    return NotFound();
+                }
+
                 return PartialView("MovieCardsPartial", movieCardViewModels);
             }
 

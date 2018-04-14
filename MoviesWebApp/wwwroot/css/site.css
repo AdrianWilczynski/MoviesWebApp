@@ -256,12 +256,31 @@ a {
     font-size: 3rem;
 }
 
-.like-button.unliked {
-    color: rgb(150, 150, 150);
+    .like-button.unliked {
+        color: rgb(150, 150, 150);
+    }
+
+    .like-button.liked {
+        color: rgb(155, 0, 0);
+    }
+
+.info-box {
+    text-align: center;
+    margin-top: 75px;
 }
 
-.like-button.liked {
-    color: rgb(155, 0, 0);
+    .info-box .info-box-icon {
+        font-size: 8rem;
+    }
+
+    .info-box .info-box-text {
+        margin-top: 20px;
+    }
+
+.all-loaded-info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 768px) {

@@ -48,12 +48,25 @@ namespace MoviesWebApp.DataAccess.Repositories
             }
         }
 
+        public IEnumerable<Movie> GetLikedMovies(int userId)
+        {
+            using (var connection = connectionFactory.GetConnection())
+            {
+                return connection.Query<Movie>(
+                    @"SELECT Movies.MovieId, Title, Description, PosterPath, ReleaseDate FROM Movies
+                    JOIN Likes ON Movies.MovieId = Likes.MovieId
+                    JOIN Users ON Likes.UserId = Users.UserId
+                    WHERE Users.UserId = 1;",
+                    new { UserId = userId });
+            }
+        }
+
         public void LikeMovie(int movieId, int userId)
         {
             using (var connection = connectionFactory.GetConnection())
             {
                 connection.Execute(@"INSERT INTO Likes(UserId, MovieId)
-                    VALUES (@MovieId, @UserId);",
+                    VALUES (@UserId, @MovieId);",
                     new { MovieId = movieId, UserId = userId });
             }
         }

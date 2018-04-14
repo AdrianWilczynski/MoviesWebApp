@@ -26,6 +26,10 @@
                     <i class="fas fa-plus navbar-link-icon"></i>
                     <span class="navbar-link-text">Dodaj film</span>
                 </a>
+                <a asp-action="@nameof(MovieController.Liked)" asp-controller="Movie" class="navbar-link">
+                    <i class="fas fa-heart navbar-link-icon"></i>
+                    <span class="navbar-link-text">Polubione filmy</span>
+                </a>
                 <form asp-action="@nameof(AccountController.Logout)" asp-controller="Account" class="navbar-link-form">
                     <button type="submit" class="navbar-link">
                         <i class="fas fa-sign-out-alt navbar-link-icon"></i>

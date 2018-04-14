@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MovieCardViewModel>
+
+@{
+    ViewBag.Title = "Polubione filmy";
+}
+
+@if (Model.Any())
+{
+    <div class="movie-cards-container">
+        @Html.Partial("MovieCardsPartial", Model)
+    </div>
+}
+else
+{
+    <div class="info-box">
+        <i class="fas fa-frown info-box-icon"></i>
+        <div class="info-box-text">Nie lubisz jeszcze żadnych filmów...</div>
+    </div>
+}

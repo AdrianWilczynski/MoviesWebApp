@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MoviesWebApp.DataAccess.Repositories;
 using MoviesWebApp.Models;
 using MoviesWebApp.Services;
 using MoviesWebApp.ViewModels;
 using System.IO;
+using System.Linq;
 using System.Security.Claims;
 
 namespace MoviesWebApp.Controllers
@@ -128,6 +128,22 @@ namespace MoviesWebApp.Controllers
             movieRepository.UnlikeMovie(movieId, userId);
 
             return Ok();
+        }
+
+        [Authorize]
+        public IActionResult Liked()
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var likedMovies = movieRepository.GetLikedMovies(userId)
+                .Select(m => new MovieCardViewModel
+                {
+                    MovieId = m.MovieId,
+                    Title = m.Title,
+                    PosterPath = m.PosterPath
+                });
+
+            return View(likedMovies);
         }
     }
 }

@@ -4,19 +4,29 @@
     ViewBag.Title = "Strona główna";
 }
 
-<div id="movieCardsContainer" class="movie-cards-container" data-starting-page="@Model.Page">
-    @Html.Partial("MovieCardsPartial", Model.MovieCards)
-</div>
+@if (Model.MovieCards.Any())
+{
+    <div id="movieCardsContainer" class="movie-cards-container" data-starting-page="@Model.Page">
+        @Html.Partial("MovieCardsPartial", Model.MovieCards)
+    </div>
 
-<button id="loadMoreMovieCardsButton" class="load-more-movie-cards-button">
-    Wczytaj więcej
-</button>
+    <button id="loadMoreMovieCardsButton" class="load-more-movie-cards-button">
+        Wczytaj więcej
+    </button>
 
-@section Scripts {
-    <environment names="Development">
-        <script src="~/js/loadMoreMovieCards.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/loadMoreMovieCards.min.js"></script>
-    </environment>
+    @section Scripts {
+        <environment names="Development">
+            <script src="~/js/loadMoreMovieCards.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/js/loadMoreMovieCards.min.js"></script>
+        </environment>
+    }
+}
+else
+{
+    <div class="info-box">
+        <i class="fas fa-frown info-box-icon"></i>
+        <div class="info-box-text">W serwisie nie ma jeszcze żadnych filmów...</div>
+    </div>
 }

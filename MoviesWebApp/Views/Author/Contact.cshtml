@@ -8,12 +8,12 @@
       class="standard-form">
     <div class="standard-form-group">
         <label for="subject">Temat</label>
-        <input id="subject" name="Subject" />
+        <input id="subject" name="Subject" maxlength="50"/>
         <span id="validationErrorForSubject" class="field-validation-error"></span>
     </div>
     <div class="standard-form-group">
         <label for="body">Treść</label>
-        <textarea id="body" name="Body" rows="20"></textarea>
+        <textarea id="body" name="Body" rows="20" maxlength="600"></textarea>
         <span id="validationErrorForBody" class="field-validation-error"></span>
     </div>
     <button id="sendEmailButton" type="submit" class="form-button">
