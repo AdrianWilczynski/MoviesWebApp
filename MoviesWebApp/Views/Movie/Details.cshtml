@@ -31,7 +31,12 @@
             </tr>
             <tr>
                 <th>Opis:</th>
-                <td>@Model.Description</td>
+                <td>
+                @foreach (var paragraph in Model.Description.Split("\n"))
+                {
+                    <p>@paragraph</p>
+                }
+                </td>
             </tr>
             <tr>
                 <th>Premiera:</th>

@@ -15,6 +15,10 @@ a {
     color: inherit;
 }
 
+h2 {
+    margin: 3px 0;
+}
+
 .main-container {
     width: 80%;
     max-width: 1440px;
@@ -303,13 +307,19 @@ a {
     .movie-details-container .movie-details-table {
         width: 100%;
         border-collapse: collapse;
-        text-align: left;
     }
 
         .movie-details-container .movie-details-table th {
             width: 30%;
-            padding-left: 3px;
             font-weight: bold;
+            text-align: left;
+            padding: 0 5px;
+        }
+
+        .movie-details-container .movie-details-table td {
+            text-align: justify;
+            text-justify: inter-word;
+            padding: 0 5px;
         }
 
         .movie-details-container .movie-details-table tr:nth-child(even) {
