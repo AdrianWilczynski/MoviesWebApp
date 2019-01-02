@@ -56,7 +56,7 @@ namespace MoviesWebApp.DataAccess.Repositories
                     @"SELECT Movies.MovieId, Title, Description, PosterPath, ReleaseDate, Country FROM Movies
                     JOIN Likes ON Movies.MovieId = Likes.MovieId
                     JOIN Users ON Likes.UserId = Users.UserId
-                    WHERE Users.UserId = 1;",
+                    WHERE Users.UserId = @UserId;",
                     new { UserId = userId });
             }
         }
